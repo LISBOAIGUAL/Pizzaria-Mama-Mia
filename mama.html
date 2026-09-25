@@ -1,0 +1,360 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Forno Rosso | Pizzaria</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --red:#d61f26;
+    --dark-red:#9d1015;
+    --yellow:#ffc928;
+    --orange:#ff8a00;
+    --dark:#160b08;
+    --cream:#fff8e8;
+    --white:#fff;
+    --gray:#746863;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:#fffaf0;
+    color:var(--dark);
+    overflow-x:hidden;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    height:82px;
+    width:100%;
+    position:fixed;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 7%;
+
+    background:rgba(255,248,232,.94);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(120,40,10,.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-family:"Montserrat";
+    font-weight:900;
+    font-size:22px;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,var(--red),#ff5a1f);
+    color:white;
+
+    box-shadow:0 8px 25px rgba(214,31,38,.25);
+}
+
+.logo span{
+    color:var(--red);
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:34px;
+}
+
+nav button{
+    border:0;
+    background:none;
+    cursor:pointer;
+
+    font-family:inherit;
+    font-size:14px;
+    font-weight:700;
+
+    color:#6e5d56;
+
+    transition:.25s;
+}
+
+nav button:hover{
+    color:var(--red);
+}
+
+.cart-button{
+    position:relative;
+
+    border:0;
+    background:var(--dark);
+
+    color:white;
+
+    padding:12px 18px;
+    border-radius:12px;
+
+    font-weight:700;
+    cursor:pointer;
+}
+
+.cart-count{
+    position:absolute;
+    right:-7px;
+    top:-7px;
+
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    background:var(--yellow);
+    color:#2b1600;
+
+    font-size:11px;
+    font-weight:900;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:730px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    padding:140px 7% 70px;
+
+    background:
+        radial-gradient(circle at 90% 30%,rgba(255,201,40,.35),transparent 25%),
+        radial-gradient(circle at 10% 70%,rgba(214,31,38,.12),transparent 30%),
+        #fff8e8;
+}
+
+.hero-content{
+    max-width:670px;
+}
+
+.mini{
+    display:inline-block;
+
+    padding:8px 13px;
+    border-radius:100px;
+
+    background:#ffe9a2;
+    color:#9c3c00;
+
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1px;
+
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:"Montserrat";
+    font-size:clamp(55px,7vw,100px);
+    line-height:.92;
+
+    letter-spacing:-5px;
+}
+
+.hero h1 span{
+    color:var(--red);
+}
+
+.hero p{
+    max-width:550px;
+
+    margin:25px 0;
+
+    color:#79645b;
+    line-height:1.7;
+
+    font-size:16px;
+}
+
+.hero-btn{
+    display:inline-block;
+
+    padding:16px 25px;
+
+    border-radius:12px;
+
+    color:white;
+    background:linear-gradient(135deg,var(--red),#ff4b1f);
+
+    font-weight:800;
+    text-decoration:none;
+
+    box-shadow:0 15px 35px rgba(214,31,38,.25);
+
+    transition:.3s;
+}
+
+.hero-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* PIZZA HERO */
+
+.hero-art{
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.big-pizza{
+    width:420px;
+    height:420px;
+
+    border-radius:50%;
+
+    position:relative;
+
+    background:
+        radial-gradient(circle at 30% 30%,#d92920 0 7%,transparent 8%),
+        radial-gradient(circle at 65% 25%,#d92920 0 7%,transparent 8%),
+        radial-gradient(circle at 70% 60%,#d92920 0 7%,transparent 8%),
+        radial-gradient(circle at 35% 70%,#d92920 0 7%,transparent 8%),
+        radial-gradient(circle at 45% 45%,#d92920 0 7%,transparent 8%),
+        radial-gradient(circle,#ffd34f 0 65%,#e99a28 66% 76%,#bb621c 77%);
+
+    box-shadow:
+        0 40px 60px rgba(85,25,0,.22),
+        inset 0 0 30px rgba(255,255,255,.3);
+
+    animation:floatPizza 4s ease-in-out infinite;
+}
+
+.big-pizza::after{
+    content:"";
+    position:absolute;
+
+    width:80%;
+    height:40px;
+
+    left:10%;
+    bottom:-60px;
+
+    border-radius:50%;
+
+    background:rgba(65,20,0,.17);
+    filter:blur(20px);
+}
+
+@keyframes floatPizza{
+    50%{
+        transform:translateY(-15px) rotate(3deg);
+    }
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+    padding:105px 7%;
+}
+
+.section-heading{
+    text-align:center;
+    max-width:600px;
+    margin:auto;
+    margin-bottom:55px;
+}
+
+.section-heading small{
+    color:var(--red);
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.section-heading h2{
+    font-family:"Montserrat";
+    font-size:43px;
+    margin:8px 0;
+    letter-spacing:-2px;
+}
+
+.section-heading p{
+    color:#89746a;
+}
+
+/* ================= CARDS ================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.card{
+    background:white;
+
+    border:1px solid rgba(93,49,24,.08);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    box-shadow:0 12px 35px rgba(67,34,12,.06);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:0 25px 50px rgba(67,34,12,.12);
+}
+
+.food-image{
+    height:220px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:110px;
+
+    background:
+        radial-gradient(circle,#fff3b5,#ffe078 50%,#ffd23d);
+
+    transition:.4s;
+}
+
+.card:hover .food-image{
+    transform:scale(1.03

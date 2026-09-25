@@ -1,0 +1,2022 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forno Rosso | Pizzaria</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --red:#d71920;
+    --darkred:#a20d12;
+    --yellow:#ffc928;
+    --orange:#ff7a00;
+    --cream:#fff8e8;
+    --dark:#190a06;
+    --gray:#806d64;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:var(--cream);
+    color:var(--dark);
+    overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+    height:80px;
+    width:100%;
+    position:fixed;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 7%;
+
+    background:rgba(255,248,232,.94);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(0,0,0,.07);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+}
+
+.logo span{
+    color:var(--red);
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav button{
+    border:0;
+    background:none;
+
+    font-size:14px;
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+nav button:hover{
+    color:var(--red);
+}
+
+.cart-button{
+    position:relative;
+
+    border:0;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    background:var(--dark);
+    color:white;
+
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+.cart-count{
+    position:absolute;
+
+    top:-8px;
+    right:-8px;
+
+    width:23px;
+    height:23px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:var(--yellow);
+    color:#111;
+
+    font-size:11px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:720px;
+
+    padding:140px 7% 70px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+
+    background:
+        radial-gradient(circle at 85% 35%,rgba(255,201,40,.55),transparent 27%),
+        radial-gradient(circle at 15% 70%,rgba(215,25,32,.15),transparent 30%),
+        var(--cream);
+}
+
+.hero-content{
+    max-width:650px;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:8px 14px;
+
+    border-radius:50px;
+
+    background:#ffe89a;
+    color:#8d3700;
+
+    font-size:11px;
+    font-weight:900;
+
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(52px,7vw,95px);
+    line-height:.92;
+    letter-spacing:-5px;
+}
+
+.hero h1 span{
+    color:var(--red);
+}
+
+.hero p{
+    max-width:520px;
+
+    margin:25px 0;
+
+    color:#765f55;
+
+    line-height:1.7;
+}
+
+.hero-button{
+    display:inline-block;
+
+    padding:16px 25px;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(135deg,var(--red),#ff4c1c);
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:800;
+
+    box-shadow:
+        0 15px 35px rgba(215,25,32,.25);
+}
+
+/* PIZZA HERO */
+
+.hero-pizza{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.pizza{
+    width:400px;
+    height:400px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(circle at 25% 30%,#c71920 0 7%,transparent 8%),
+        radial-gradient(circle at 65% 20%,#c71920 0 7%,transparent 8%),
+        radial-gradient(circle at 70% 65%,#c71920 0 7%,transparent 8%),
+        radial-gradient(circle at 30% 70%,#c71920 0 7%,transparent 8%),
+        radial-gradient(circle at 48% 45%,#c71920 0 7%,transparent 8%),
+        radial-gradient(circle,#ffd54f 0 65%,#e99b28 66% 77%,#a84b14 78%);
+
+    box-shadow:
+        0 40px 60px rgba(80,20,0,.2),
+        inset 0 0 25px rgba(255,255,255,.35);
+
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-15px) rotate(4deg);
+    }
+}
+
+/* SEÇÕES */
+
+.menu{
+    padding:100px 7%;
+}
+
+.title{
+    max-width:600px;
+
+    margin:0 auto 50px;
+
+    text-align:center;
+}
+
+.title small{
+    color:var(--red);
+
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.title h2{
+    margin:8px 0;
+
+    font-size:42px;
+}
+
+.title p{
+    color:var(--gray);
+}
+
+/* PRODUTOS */
+
+.products{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:22px;
+}
+
+.card{
+    overflow:hidden;
+
+    background:white;
+
+    border-radius:20px;
+
+    border:
+        1px solid rgba(0,0,0,.06);
+
+    box-shadow:
+        0 15px 35px rgba(70,30,10,.07);
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+        0 25px 50px rgba(70,30,10,.14);
+}
+
+.product-image{
+    height:220px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:100px;
+
+    background:
+        radial-gradient(circle,#fff3a7,#ffd946);
+}
+
+.card-content{
+    padding:22px;
+}
+
+.card-content h3{
+    font-size:19px;
+}
+
+.card-content p{
+    min-height:42px;
+
+    margin:10px 0 20px;
+
+    color:#806e65;
+
+    font-size:13px;
+    line-height:1.6;
+}
+
+.bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.price{
+    color:var(--red);
+
+    font-size:21px;
+    font-weight:900;
+}
+
+.add{
+    width:43px;
+    height:43px;
+
+    border:0;
+    border-radius:11px;
+
+    background:var(--dark);
+    color:white;
+
+    font-size:21px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.add:hover{
+    background:var(--red);
+
+    transform:scale(1.08);
+}
+
+/* BEBIDAS */
+
+#bebidas{
+    background:#190a06;
+    color:white;
+}
+
+#bebidas .title small{
+    color:var(--yellow);
+}
+
+#bebidas .title p{
+    color:#a58e84;
+}
+
+#bebidas .card{
+    background:#27110b;
+
+    border-color:#3b1d13;
+}
+
+#bebidas .card-content p{
+    color:#ad968c;
+}
+
+#bebidas .product-image{
+    background:
+        radial-gradient(circle,#54271d,#25100b);
+}
+
+/* OVERLAY */
+
+.overlay{
+    position:fixed;
+    inset:0;
+
+    z-index:2000;
+
+    background:rgba(0,0,0,.55);
+
+    backdrop-filter:blur(5px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+}
+
+.overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+/* CARRINHO */
+
+.cart{
+    position:fixed;
+
+    top:0;
+    right:-450px;
+
+    z-index:2100;
+
+    width:420px;
+    max-width:100%;
+
+    height:100vh;
+
+    padding:28px;
+
+    background:#fff9ed;
+
+    display:flex;
+    flex-direction:column;
+
+    box-shadow:
+        -20px 0 60px rgba(0,0,0,.25);
+
+    transition:.4s;
+}
+
+.cart.open{
+    right:0;
+}
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding-bottom:20px;
+
+    border-bottom:
+        1px solid #e8dcd1;
+}
+
+.cart-header button{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.cart-items{
+    flex:1;
+
+    overflow:auto;
+
+    padding:15px 0;
+}
+
+.empty{
+    padding:60px 10px;
+
+    color:#8b756a;
+
+    text-align:center;
+}
+
+.empty span{
+    display:block;
+
+    margin-bottom:12px;
+
+    font-size:45px;
+}
+
+.empty p{
+    margin-top:8px;
+
+    font-size:13px;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:15px 0;
+
+    border-bottom:
+        1px solid #e8dcd1;
+}
+
+.cart-item strong{
+    display:block;
+}
+
+.cart-item small{
+    color:#8a766c;
+}
+
+.remove{
+    border:0;
+
+    background:none;
+
+    color:var(--red);
+
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+.total{
+    padding:20px 0;
+
+    display:flex;
+    justify-content:space-between;
+
+    font-size:21px;
+    font-weight:900;
+}
+
+.checkout{
+    width:100%;
+
+    padding:17px;
+
+    border:0;
+    border-radius:12px;
+
+    background:
+        linear-gradient(135deg,var(--red),#ff4b1c);
+
+    color:white;
+
+    font-size:15px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.checkout:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(215,25,32,.25);
+}
+
+/* FORNO */
+
+.oven-screen{
+    position:fixed;
+    inset:0;
+
+    z-index:5000;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle,#46160c,#130403 65%);
+}
+
+.oven-screen.active{
+    display:flex;
+}
+
+.oven{
+    width:500px;
+    height:320px;
+
+    max-width:85%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:
+        15px solid #39130c;
+
+    border-radius:
+        50% 50% 15px 15px;
+
+    background:
+        linear-gradient(#a34122,#592013);
+
+    box-shadow:
+        0 0 100px rgba(255,70,0,.3);
+}
+
+.oven-hole{
+    width:75%;
+    height:65%;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+
+    border-radius:
+        50% 50% 5px 5px;
+
+    background:#080202;
+
+    box-shadow:
+        inset 0 -20px 60px #ff3b00;
+}
+
+.fire{
+    font-size:55px;
+
+    animation:
+        fire .25s infinite alternate;
+}
+
+@keyframes fire{
+    to{
+        transform:scale(1.15);
+    }
+}
+
+.flying-pizza{
+    position:absolute;
+
+    font-size:130px;
+
+    animation:
+        ovenPizza 2.3s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+@keyframes ovenPizza{
+
+    0%{
+        left:-200px;
+
+        transform:
+            rotate(-30deg)
+            scale(1.2);
+    }
+
+    65%{
+        left:50%;
+
+        transform:
+            translateX(-50%)
+            rotate(330deg)
+            scale(1);
+    }
+
+    100%{
+        left:50%;
+
+        transform:
+            translateX(-50%)
+            translateY(50px)
+            rotate(360deg)
+            scale(.2);
+
+        opacity:.1;
+    }
+}
+
+.oven-message{
+    position:absolute;
+
+    bottom:7%;
+
+    color:white;
+
+    text-align:center;
+
+    opacity:0;
+
+    animation:
+        messageAppear .8s
+        forwards 2s;
+}
+
+.oven-message small{
+    color:var(--yellow);
+
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.oven-message h2{
+    margin-top:8px;
+
+    font-size:
+        clamp(28px,5vw,55px);
+}
+
+@keyframes messageAppear{
+    to{
+        opacity:1;
+
+        transform:
+            translateY(-10px);
+    }
+}
+
+/* PAGAMENTO */
+
+.finish{
+    position:fixed;
+    inset:0;
+
+    z-index:6000;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffc928,
+            #e32120 60%,
+            #a20d12
+        );
+
+    color:white;
+}
+
+.finish.active{
+    display:flex;
+}
+
+.finish::before{
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    border:
+        2px solid rgba(255,255,255,.15);
+
+    border-radius:50%;
+
+    animation:
+        pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+
+    50%{
+        transform:scale(1.15);
+        opacity:.3;
+    }
+
+}
+
+.hand-area{
+    position:absolute;
+
+    left:50%;
+    top:43%;
+
+    width:400px;
+    height:400px;
+
+    transform:
+        translate(-50%,-50%);
+}
+
+.spin-pizza{
+    position:absolute;
+
+    top:0;
+    left:50%;
+
+    z-index:2;
+
+    font-size:140px;
+
+    animation:
+        spinPizza .8s linear infinite;
+}
+
+@keyframes spinPizza{
+
+    from{
+        transform:
+            translateX(-50%)
+            rotate(0);
+    }
+
+    to{
+        transform:
+            translateX(-50%)
+            rotate(360deg);
+    }
+}
+
+.hand{
+    position:absolute;
+
+    left:50%;
+    bottom:10px;
+
+    font-size:175px;
+
+    transform:
+        translateX(-50%)
+        translateY(350px);
+
+    animation:
+        handUp 1s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+@keyframes handUp{
+
+    to{
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+}
+
+.finish-message{
+    position:absolute;
+
+    bottom:7%;
+
+    width:100%;
+
+    padding:20px;
+
+    text-align:center;
+
+    opacity:0;
+
+    animation:
+        finalMessage .7s
+        forwards 1s;
+}
+
+.finish-message h2{
+    font-size:
+        clamp(32px,5vw,55px);
+}
+
+.finish-message p{
+    margin-top:10px;
+
+    color:#fff1c6;
+}
+
+.whatsapp-status{
+    display:inline-block;
+
+    margin-top:18px;
+
+    padding:9px 14px;
+
+    border-radius:50px;
+
+    background:
+        rgba(0,0,0,.16);
+
+    font-size:12px;
+    font-weight:bold;
+}
+
+@keyframes finalMessage{
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(-10px);
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .hero-content{
+        margin:auto;
+    }
+
+    .hero p{
+        margin:25px auto;
+    }
+
+    .hero-pizza{
+        margin-top:60px;
+    }
+
+    .pizza{
+        width:280px;
+        height:280px;
+    }
+
+    .products{
+        grid-template-columns:
+            1fr 1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .menu{
+        padding:
+            80px 5%;
+    }
+
+    .hand-area{
+        transform:
+            translate(-50%,-50%)
+            scale(.8);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🍕 FORNO <span>ROSSO</span>
+    </div>
+
+    <nav>
+
+        <button onclick="goTo('pizzas')">
+            Pizzas
+        </button>
+
+        <button onclick="goTo('bebidas')">
+            Bebidas
+        </button>
+
+        <button onclick="openCart()">
+            Carrinho
+        </button>
+
+    </nav>
+
+    <button
+        class="cart-button"
+        onclick="openCart()">
+
+        🛒 Carrinho
+
+        <span
+            class="cart-count"
+            id="cartCount">
+            0
+        </span>
+
+    </button>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🔥 DIRETO DO FORNO
+        </div>
+
+        <h1>
+            SUA FOME<br>
+            <span>ACABA AQUI.</span>
+        </h1>
+
+        <p>
+            Massa artesanal, ingredientes selecionados
+            e pizzas preparadas especialmente depois
+            que você faz o seu pedido.
+        </p>
+
+        <a
+            href="#pizzas"
+            class="hero-button">
+
+            Escolher minha pizza →
+
+        </a>
+
+    </div>
+
+    <div class="hero-pizza">
+
+        <div class="pizza"></div>
+
+    </div>
+
+</section>
+
+
+<!-- PIZZAS -->
+
+<section
+    class="menu"
+    id="pizzas">
+
+    <div class="title">
+
+        <small>
+            NOSSO CARDÁPIO
+        </small>
+
+        <h2>
+            Escolha sua pizza
+        </h2>
+
+        <p>
+            Selecione seu sabor favorito
+            e mande direto para o forno.
+        </p>
+
+    </div>
+
+    <div
+        class="products"
+        id="pizzaGrid">
+    </div>
+
+</section>
+
+
+<!-- BEBIDAS -->
+
+<section
+    class="menu"
+    id="bebidas">
+
+    <div class="title">
+
+        <small>
+            BEBIDAS
+        </small>
+
+        <h2>
+            Pra acompanhar.
+        </h2>
+
+        <p>
+            Complete seu pedido com
+            uma bebida bem gelada.
+        </p>
+
+    </div>
+
+    <div
+        class="products"
+        id="drinkGrid">
+    </div>
+
+</section>
+
+
+<!-- OVERLAY -->
+
+<div
+    class="overlay"
+    id="overlay"
+    onclick="closeCart()">
+</div>
+
+
+<!-- CARRINHO -->
+
+<aside
+    class="cart"
+    id="cart">
+
+    <div class="cart-header">
+
+        <h2>
+            🛒 Seu carrinho
+        </h2>
+
+        <button onclick="closeCart()">
+            ✕
+        </button>
+
+    </div>
+
+    <div
+        class="cart-items"
+        id="cartItems">
+    </div>
+
+    <div class="total">
+
+        <span>Total</span>
+
+        <span id="total">
+            R$ 0,00
+        </span>
+
+    </div>
+
+    <button
+        class="checkout"
+        onclick="finishOrder()">
+
+        Concluir pagamento →
+
+    </button>
+
+</aside>
+
+
+<!-- ANIMAÇÃO FORNO -->
+
+<div
+    class="oven-screen"
+    id="ovenScreen">
+</div>
+
+
+<!-- ANIMAÇÃO FINAL -->
+
+<div
+    class="finish"
+    id="finish">
+</div>
+
+
+<script>
+
+/* ==========================================
+   PRODUTOS
+========================================== */
+
+const pizzas = [
+
+    {
+        name:"Margherita",
+        description:
+        "Molho artesanal, mozzarella, tomate e manjericão fresco.",
+        price:39.90
+    },
+
+    {
+        name:"Pepperoni",
+        description:
+        "Mozzarella, molho especial e generosas fatias de pepperoni.",
+        price:44.90
+    },
+
+    {
+        name:"Quatro Queijos",
+        description:
+        "Mozzarella, parmesão, provolone e gorgonzola.",
+        price:46.90
+    },
+
+    {
+        name:"Calabresa",
+        description:
+        "Calabresa artesanal, mozzarella, cebola e orégano.",
+        price:41.90
+    },
+
+    {
+        name:"Frango Especial",
+        description:
+        "Frango temperado, mozzarella, milho e requeijão cremoso.",
+        price:43.90
+    },
+
+    {
+        name:"Forno Rosso",
+        description:
+        "Pepperoni, bacon, cebola caramelizada e molho especial da casa.",
+        price:52.90
+    }
+
+];
+
+
+const drinks = [
+
+    {
+        name:"Cola Gelada",
+        description:
+        "Refrigerante cola 1L bem gelado.",
+        price:10.90,
+        icon:"🥤"
+    },
+
+    {
+        name:"Limonada",
+        description:
+        "Limonada artesanal preparada na hora.",
+        price:8.90,
+        icon:"🍋"
+    },
+
+    {
+        name:"Suco de Laranja",
+        description:
+        "Suco natural de laranja.",
+        price:9.90,
+        icon:"🍊"
+    }
+
+];
+
+
+let cart = [];
+
+let ovenRunning = false;
+
+
+/* ==========================================
+   FORMATAÇÃO DO DINHEIRO
+========================================== */
+
+function money(value){
+
+    return value.toLocaleString(
+        "pt-BR",
+        {
+            style:"currency",
+            currency:"BRL"
+        }
+    );
+
+}
+
+
+/* ==========================================
+   CRIAR CARDÁPIO
+========================================== */
+
+function loadProducts(){
+
+    const pizzaGrid =
+        document.getElementById(
+            "pizzaGrid"
+        );
+
+    const drinkGrid =
+        document.getElementById(
+            "drinkGrid"
+        );
+
+
+    pizzaGrid.innerHTML = "";
+
+    drinkGrid.innerHTML = "";
+
+
+    pizzas.forEach(
+        (pizza,index)=>{
+
+        pizzaGrid.insertAdjacentHTML(
+            "beforeend",
+            `
+
+            <article class="card">
+
+                <div class="product-image">
+                    🍕
+                </div>
+
+                <div class="card-content">
+
+                    <h3>
+                        ${pizza.name}
+                    </h3>
+
+                    <p>
+                        ${pizza.description}
+                    </p>
+
+                    <div class="bottom">
+
+                        <div class="price">
+                            ${money(pizza.price)}
+                        </div>
+
+                        <button
+                            class="add"
+                            onclick="addPizza(${index})">
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            `
+        );
+
+    });
+
+
+    drinks.forEach(
+        (drink,index)=>{
+
+        drinkGrid.insertAdjacentHTML(
+            "beforeend",
+            `
+
+            <article class="card">
+
+                <div class="product-image">
+                    ${drink.icon}
+                </div>
+
+                <div class="card-content">
+
+                    <h3>
+                        ${drink.name}
+                    </h3>
+
+                    <p>
+                        ${drink.description}
+                    </p>
+
+                    <div class="bottom">
+
+                        <div class="price">
+                            ${money(drink.price)}
+                        </div>
+
+                        <button
+                            class="add"
+                            onclick="addDrink(${index})">
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            `
+        );
+
+    });
+
+}
+
+
+/* ==========================================
+   ADICIONAR PIZZA
+========================================== */
+
+function addPizza(index){
+
+    const pizza =
+        pizzas[index];
+
+
+    if(!pizza)
+        return;
+
+
+    cart.push({
+
+        name:pizza.name,
+
+        price:pizza.price,
+
+        type:"pizza"
+
+    });
+
+
+    updateCart();
+
+
+    showOven(
+        pizza.name
+    );
+
+}
+
+
+/* ==========================================
+   ADICIONAR BEBIDA
+========================================== */
+
+function addDrink(index){
+
+    const drink =
+        drinks[index];
+
+
+    if(!drink)
+        return;
+
+
+    cart.push({
+
+        name:drink.name,
+
+        price:drink.price,
+
+        type:"drink"
+
+    });
+
+
+    updateCart();
+
+}
+
+
+/* ==========================================
+   ANIMAÇÃO DO FORNO
+========================================== */
+
+function showOven(name){
+
+    if(ovenRunning)
+        return;
+
+
+    ovenRunning = true;
+
+
+    const screen =
+        document.getElementById(
+            "ovenScreen"
+        );
+
+
+    screen.innerHTML = `
+
+        <div class="oven">
+
+            <div class="oven-hole">
+
+                <div class="fire">
+                    🔥🔥🔥
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="flying-pizza">
+            🍕
+        </div>
+
+
+        <div class="oven-message">
+
+            <small>
+                ${name.toUpperCase()}
+                NO FORNO
+            </small>
+
+            <h2>
+                Seu pedido está a caminho.
+            </h2>
+
+        </div>
+
+    `;
+
+
+    screen.classList.add(
+        "active"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    setTimeout(()=>{
+
+        screen.classList.remove(
+            "active"
+        );
+
+
+        screen.innerHTML =
+            "";
+
+
+        document.body.style.overflow =
+            "";
+
+
+        ovenRunning =
+            false;
+
+    },3500);
+
+}
+
+
+/* ==========================================
+   ATUALIZAR CARRINHO
+========================================== */
+
+function updateCart(){
+
+    const container =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    const count =
+        document.getElementById(
+            "cartCount"
+        );
+
+
+    const totalElement =
+        document.getElementById(
+            "total"
+        );
+
+
+    count.textContent =
+        cart.length;
+
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <span>🛒</span>
+
+                <strong>
+                    Seu carrinho está vazio
+                </strong>
+
+                <p>
+                    Adicione uma pizza
+                    para começar.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+    else{
+
+        container.innerHTML =
+            "";
+
+
+        cart.forEach(
+            (item,index)=>{
+
+            const icon =
+                item.type === "pizza"
+                ? "🍕"
+                : "🥤";
+
+
+            container.insertAdjacentHTML(
+                "beforeend",
+                `
+
+                <div class="cart-item">
+
+                    <div>
+
+                        <strong>
+                            ${icon}
+                            ${item.name}
+                        </strong>
+
+                        <small>
+                            ${money(item.price)}
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        class="remove"
+                        onclick="removeItem(${index})">
+
+                        Remover
+
+                    </button>
+
+                </div>
+
+                `
+            );
+
+        });
+
+    }
+
+
+    const total =
+        cart.reduce(
+            (sum,item)=>
+                sum + item.price,
+            0
+        );
+
+
+    totalElement.textContent =
+        money(total);
+
+}
+
+
+/* ==========================================
+   REMOVER ITEM
+========================================== */
+
+function removeItem(index){
+
+    cart.splice(
+        index,
+        1
+    );
+
+
+    updateCart();
+
+}
+
+
+/* ==========================================
+   ABRIR CARRINHO
+========================================== */
+
+function openCart(){
+
+    document
+        .getElementById("cart")
+        .classList.add("open");
+
+
+    document
+        .getElementById("overlay")
+        .classList.add("show");
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* ==========================================
+   FECHAR CARRINHO
+========================================== */
+
+function closeCart(){
+
+    document
+        .getElementById("cart")
+        .classList.remove("open");
+
+
+    document
+        .getElementById("overlay")
+        .classList.remove("show");
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* ==========================================
+   CONCLUIR PEDIDO + WHATSAPP
+========================================== */
+
+function finishOrder(){
+
+    /*
+        Impede finalizar
+        carrinho vazio.
+    */
+
+    if(cart.length === 0){
+
+        alert(
+            "Adicione pelo menos um item antes de concluir o pedido."
+        );
+
+        return;
+
+    }
+
+
+    /*
+        Número do WhatsApp.
+
+        55 = Brasil
+        83 = DDD
+        restante = telefone
+    */
+
+    const numeroWhatsApp =
+        "5583993318645";
+
+
+    /*
+        Calculamos o total ANTES
+        de limpar o carrinho.
+    */
+
+    const valorTotal =
+        cart.reduce(
+            (soma,item)=>
+                soma + item.price,
+            0
+        );
+
+
+    /*
+        Criação da mensagem.
+    */
+
+    let mensagem =
+        "🍕 *NOVO PEDIDO - FORNO ROSSO*\n\n";
+
+
+    mensagem +=
+        "📋 *ITENS DO PEDIDO:*\n\n";
+
+
+    cart.forEach(
+        (item,index)=>{
+
+        const icone =
+            item.type === "pizza"
+            ? "🍕"
+            : "🥤";
+
+
+        mensagem +=
+            `${index + 1}. ${icone} *${item.name}*\n`;
+
+
+        mensagem +=
+            `   ${money(item.price)}\n\n`;
+
+    });
+
+
+    mensagem +=
+        "━━━━━━━━━━━━━━━━━━\n";
+
+
+    mensagem +=
+        `💰 *TOTAL: ${money(valorTotal)}*\n`;
+
+
+    mensagem +=
+        "━━━━━━━━━━━━━━━━━━\n\n";
+
+
+    mensagem +=
+        "Olá! Gostaria de confirmar este pedido. 🍕";
+
+
+    /*
+        Converte caracteres para
+        funcionarem dentro da URL.
+    */
+
+    const mensagemCodificada =
+        encodeURIComponent(
+            mensagem
+        );
+
+
+    /*
+        Cria link oficial do WhatsApp.
+    */
+
+    const whatsappURL =
+        `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+
+
+    /*
+        Fecha o carrinho.
+    */
+
+    closeCart();
+
+
+    /*
+        Animação profissional
+        antes de abrir WhatsApp.
+    */
+
+    const screen =
+        document.getElementById(
+            "finish"
+        );
+
+
+    screen.innerHTML = `
+
+        <div class="hand-area">
+
+            <div class="spin-pizza">
+                🍕
+            </div>
+
+            <div class="hand">
+                🤚
+            </div>
+
+        </div>
+
+
+        <div class="finish-message">
+
+            <h2>
+                Pedido preparado!
+            </h2>
+
+            <p>
+                Estamos levando você
+                para confirmar o pedido.
+            </p>
+
+            <div class="whatsapp-status">
+
+                📱 Abrindo WhatsApp...
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    screen.classList.add(
+        "active"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    /*
+        Espera a animação aparecer
+        antes de abrir o WhatsApp.
+    */
+
+    setTimeout(()=>{
+
+        /*
+            Abre o WhatsApp com
+            o pedido preenchido.
+        */
+
+        window.location.href =
+            whatsappURL;
+
+
+        /*
+            Limpa carrinho depois
+            de preparar o envio.
+        */
+
+        cart = [];
+
+
+        updateCart();
+
+
+        screen.classList.remove(
+            "active"
+        );
+
+
+        screen.innerHTML =
+            "";
+
+
+        document.body.style.overflow =
+            "";
+
+    },2300);
+
+}
+
+
+/* ==========================================
+   NAVEGAÇÃO
+========================================== */
+
+function goTo(id){
+
+    const section =
+        document.getElementById(id);
+
+
+    if(!section)
+        return;
+
+
+    section.scrollIntoView({
+
+        behavior:"smooth",
+
+        block:"start"
+
+    });
+
+}
+
+
+/* ==========================================
+   ESC FECHA CARRINHO
+========================================== */
+
+document.addEventListener(
+    "keydown",
+    (event)=>{
+
+        if(event.key === "Escape"){
+
+            closeCart();
+
+        }
+
+    }
+);
+
+
+/* ==========================================
+   INICIAR SITE
+========================================== */
+
+loadProducts();
+
+updateCart();
+
+</script>
+
+</body>
+</html>
+```
