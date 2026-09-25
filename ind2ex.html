@@ -4,977 +4,1524 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Forno Rosso | Pizzaria</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+/* =========================================================
+   CONFIGURAÇÃO GERAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-:root{
-    --red:#d71920;
-    --darkred:#a20d12;
-    --yellow:#ffc928;
-    --orange:#ff7a00;
-    --cream:#fff8e8;
-    --dark:#190a06;
-    --gray:#806d64;
+:root {
+    --red: #d71920;
+    --dark-red: #9f0e13;
+    --yellow: #ffc928;
+    --orange: #ff6b00;
+    --cream: #fff8e7;
+    --dark: #190906;
+    --gray: #806d64;
+    --green: #25d366;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-    font-family:Arial,sans-serif;
-    background:var(--cream);
-    color:var(--dark);
-    overflow-x:hidden;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
 }
 
-/* HEADER */
-
-header{
-    height:80px;
-    width:100%;
-    position:fixed;
-    top:0;
-    z-index:1000;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 7%;
-
-    background:rgba(255,248,232,.94);
-    backdrop-filter:blur(15px);
-
-    border-bottom:1px solid rgba(0,0,0,.07);
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
 }
 
-.logo{
-    font-size:22px;
-    font-weight:900;
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    width: 100%;
+    height: 80px;
+
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(255, 248, 231, 0.94);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(0,0,0,.07);
 }
 
-.logo span{
-    color:var(--red);
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -1px;
 }
 
-nav{
-    display:flex;
-    gap:30px;
+.logo span {
+    color: var(--red);
 }
 
-nav button{
-    border:0;
-    background:none;
-
-    font-size:14px;
-    font-weight:700;
-
-    cursor:pointer;
+nav {
+    display: flex;
+    gap: 30px;
 }
 
-nav button:hover{
-    color:var(--red);
+nav button {
+    border: none;
+    background: transparent;
+
+    color: var(--dark);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .2s;
 }
 
-.cart-button{
-    position:relative;
-
-    border:0;
-
-    padding:12px 18px;
-
-    border-radius:12px;
-
-    background:var(--dark);
-    color:white;
-
-    font-weight:800;
-
-    cursor:pointer;
+nav button:hover {
+    color: var(--red);
 }
 
-.cart-count{
-    position:absolute;
+.cart-button {
+    position: relative;
 
-    top:-8px;
-    right:-8px;
+    padding: 12px 18px;
 
-    width:23px;
-    height:23px;
+    border: none;
+    border-radius: 12px;
 
-    display:grid;
-    place-items:center;
+    background: var(--dark);
+    color: white;
 
-    border-radius:50%;
+    font-weight: 800;
 
-    background:var(--yellow);
-    color:#111;
+    cursor: pointer;
 
-    font-size:11px;
+    transition: .2s;
 }
 
-/* HERO */
+.cart-button:hover {
+    transform: translateY(-2px);
+    background: var(--red);
+}
 
-.hero{
-    min-height:720px;
+.cart-count {
+    position: absolute;
 
-    padding:140px 7% 70px;
+    top: -8px;
+    right: -8px;
 
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    align-items:center;
+    width: 23px;
+    height: 23px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--yellow);
+    color: black;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 720px;
+
+    padding: 140px 7% 70px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
 
     background:
-        radial-gradient(circle at 85% 35%,rgba(255,201,40,.55),transparent 27%),
-        radial-gradient(circle at 15% 70%,rgba(215,25,32,.15),transparent 30%),
+        radial-gradient(
+            circle at 85% 35%,
+            rgba(255, 201, 40, .50),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 15% 70%,
+            rgba(215, 25, 32, .14),
+            transparent 30%
+        ),
         var(--cream);
 }
 
-.hero-content{
-    max-width:650px;
+.hero-content {
+    max-width: 650px;
 }
 
-.badge{
-    display:inline-block;
+.badge {
+    display: inline-block;
 
-    padding:8px 14px;
+    margin-bottom: 20px;
 
-    border-radius:50px;
+    padding: 8px 14px;
 
-    background:#ffe89a;
-    color:#8d3700;
+    border-radius: 50px;
 
-    font-size:11px;
-    font-weight:900;
+    background: #ffe89a;
+    color: #8d3700;
 
-    margin-bottom:20px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .5px;
 }
 
-.hero h1{
-    font-size:clamp(52px,7vw,95px);
-    line-height:.92;
-    letter-spacing:-5px;
+.hero h1 {
+    font-size: clamp(50px, 7vw, 95px);
+
+    line-height: .92;
+    letter-spacing: -5px;
 }
 
-.hero h1 span{
-    color:var(--red);
+.hero h1 span {
+    color: var(--red);
 }
 
-.hero p{
-    max-width:520px;
+.hero p {
+    max-width: 520px;
 
-    margin:25px 0;
+    margin: 25px 0;
 
-    color:#765f55;
+    color: #765f55;
 
-    line-height:1.7;
+    font-size: 16px;
+    line-height: 1.7;
 }
 
-.hero-button{
-    display:inline-block;
+.hero-button {
+    display: inline-block;
 
-    padding:16px 25px;
+    padding: 16px 25px;
 
-    border-radius:12px;
+    border-radius: 12px;
 
     background:
-        linear-gradient(135deg,var(--red),#ff4c1c);
+        linear-gradient(
+            135deg,
+            var(--red),
+            #ff4c1c
+        );
 
-    color:white;
+    color: white;
 
-    text-decoration:none;
-
-    font-weight:800;
+    text-decoration: none;
+    font-weight: 800;
 
     box-shadow:
         0 15px 35px rgba(215,25,32,.25);
+
+    transition: .25s;
 }
 
-/* PIZZA HERO */
-
-.hero-pizza{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.pizza{
-    width:400px;
-    height:400px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(circle at 25% 30%,#c71920 0 7%,transparent 8%),
-        radial-gradient(circle at 65% 20%,#c71920 0 7%,transparent 8%),
-        radial-gradient(circle at 70% 65%,#c71920 0 7%,transparent 8%),
-        radial-gradient(circle at 30% 70%,#c71920 0 7%,transparent 8%),
-        radial-gradient(circle at 48% 45%,#c71920 0 7%,transparent 8%),
-        radial-gradient(circle,#ffd54f 0 65%,#e99b28 66% 77%,#a84b14 78%);
+.hero-button:hover {
+    transform: translateY(-3px);
 
     box-shadow:
-        0 40px 60px rgba(80,20,0,.2),
-        inset 0 0 25px rgba(255,255,255,.35);
-
-    animation:float 4s ease-in-out infinite;
+        0 20px 40px rgba(215,25,32,.35);
 }
 
-@keyframes float{
-    50%{
-        transform:translateY(-15px) rotate(4deg);
+
+/* =========================================================
+   PIZZA REAL DO HERO
+========================================================= */
+
+.hero-pizza {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.hero-pizza::before {
+    content: "";
+
+    position: absolute;
+
+    width: 370px;
+    height: 80px;
+
+    bottom: -20px;
+
+    border-radius: 50%;
+
+    background: rgba(80,20,0,.18);
+
+    filter: blur(22px);
+
+    animation: shadowPizza 4s ease-in-out infinite;
+}
+
+.hero-pizza-real {
+    position: relative;
+
+    z-index: 2;
+
+    width: 430px;
+    height: 430px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 8px solid rgba(255,255,255,.45);
+
+    box-shadow:
+        0 40px 60px rgba(80,20,0,.25),
+        inset 0 0 20px rgba(255,255,255,.3);
+
+    animation:
+        floatPizza 4s ease-in-out infinite;
+}
+
+@keyframes floatPizza {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-3deg);
+    }
+
+    50% {
+        transform:
+            translateY(-18px)
+            rotate(3deg);
     }
 }
 
-/* SEÇÕES */
+@keyframes shadowPizza {
 
-.menu{
-    padding:100px 7%;
+    50% {
+        transform: scale(.9);
+        opacity: .6;
+    }
 }
 
-.title{
-    max-width:600px;
 
-    margin:0 auto 50px;
+/* =========================================================
+   SEÇÕES
+========================================================= */
 
-    text-align:center;
+.menu {
+    padding: 100px 7%;
 }
 
-.title small{
-    color:var(--red);
+.title {
+    max-width: 620px;
 
-    font-weight:900;
-    letter-spacing:2px;
+    margin: 0 auto 50px;
+
+    text-align: center;
 }
 
-.title h2{
-    margin:8px 0;
+.title small {
+    color: var(--red);
 
-    font-size:42px;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
 
-.title p{
-    color:var(--gray);
+.title h2 {
+    margin: 8px 0 12px;
+
+    font-size: 42px;
+    letter-spacing: -1.5px;
 }
 
-/* PRODUTOS */
+.title p {
+    color: var(--gray);
+    line-height: 1.6;
+}
 
-.products{
-    display:grid;
+
+/* =========================================================
+   PRODUTOS
+========================================================= */
+
+.products {
+    display: grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
-    gap:22px;
+    gap: 22px;
 }
 
-.card{
-    overflow:hidden;
+.card {
+    overflow: hidden;
 
-    background:white;
+    border-radius: 22px;
 
-    border-radius:20px;
+    background: white;
 
-    border:
-        1px solid rgba(0,0,0,.06);
+    border: 1px solid rgba(0,0,0,.06);
 
     box-shadow:
         0 15px 35px rgba(70,30,10,.07);
 
-    transition:.3s;
+    transition:
+        transform .3s,
+        box-shadow .3s;
 }
 
-.card:hover{
-    transform:translateY(-8px);
+.card:hover {
+    transform: translateY(-8px);
 
     box-shadow:
         0 25px 50px rgba(70,30,10,.14);
 }
 
-.product-image{
-    height:220px;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+/* =========================================================
+   FOTOS REAIS DAS PIZZAS
+========================================================= */
 
-    font-size:100px;
+.product-image {
+    position: relative;
+
+    height: 240px;
+
+    overflow: hidden;
+
+    background: #1b0b07;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform .6s ease;
+}
+
+.card:hover .product-image img {
+    transform: scale(1.08);
+}
+
+.product-image::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
 
     background:
-        radial-gradient(circle,#fff3a7,#ffd946);
+        linear-gradient(
+            transparent 55%,
+            rgba(0,0,0,.18)
+        );
+
+    pointer-events: none;
 }
 
-.card-content{
-    padding:22px;
+.product-badge {
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    z-index: 2;
+
+    padding: 7px 10px;
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,.92);
+
+    color: var(--red);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    backdrop-filter: blur(5px);
 }
 
-.card-content h3{
-    font-size:19px;
+.card-content {
+    padding: 22px;
 }
 
-.card-content p{
-    min-height:42px;
-
-    margin:10px 0 20px;
-
-    color:#806e65;
-
-    font-size:13px;
-    line-height:1.6;
+.card-content h3 {
+    font-size: 20px;
 }
 
-.bottom{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.card-content p {
+    min-height: 43px;
+
+    margin: 10px 0 20px;
+
+    color: #806e65;
+
+    font-size: 13px;
+    line-height: 1.6;
 }
 
-.price{
-    color:var(--red);
-
-    font-size:21px;
-    font-weight:900;
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.add{
-    width:43px;
-    height:43px;
+.price {
+    color: var(--red);
 
-    border:0;
-    border-radius:11px;
-
-    background:var(--dark);
-    color:white;
-
-    font-size:21px;
-
-    cursor:pointer;
-
-    transition:.2s;
+    font-size: 21px;
+    font-weight: 900;
 }
 
-.add:hover{
-    background:var(--red);
+.add {
+    width: 45px;
+    height: 45px;
 
-    transform:scale(1.08);
+    border: none;
+    border-radius: 12px;
+
+    background: var(--dark);
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: .2s;
 }
 
-/* BEBIDAS */
+.add:hover {
+    background: var(--red);
 
-#bebidas{
-    background:#190a06;
-    color:white;
+    transform: scale(1.08);
 }
 
-#bebidas .title small{
-    color:var(--yellow);
+
+/* =========================================================
+   BEBIDAS
+========================================================= */
+
+#bebidas {
+    background: #190a06;
+    color: white;
 }
 
-#bebidas .title p{
-    color:#a58e84;
+#bebidas .title small {
+    color: var(--yellow);
 }
 
-#bebidas .card{
-    background:#27110b;
-
-    border-color:#3b1d13;
+#bebidas .title p {
+    color: #a58e84;
 }
 
-#bebidas .card-content p{
-    color:#ad968c;
+#bebidas .card {
+    background: #27110b;
+
+    border-color: #3b1d13;
 }
 
-#bebidas .product-image{
+#bebidas .card-content p {
+    color: #ad968c;
+}
+
+.drink-image {
+    height: 240px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background:
-        radial-gradient(circle,#54271d,#25100b);
+        radial-gradient(
+            circle,
+            #54271d,
+            #25100b
+        );
+
+    font-size: 100px;
 }
 
-/* OVERLAY */
 
-.overlay{
-    position:fixed;
-    inset:0;
+/* =========================================================
+   OVERLAY
+========================================================= */
 
-    z-index:2000;
+.overlay {
+    position: fixed;
+    inset: 0;
 
-    background:rgba(0,0,0,.55);
+    z-index: 2000;
 
-    backdrop-filter:blur(5px);
+    background: rgba(0,0,0,.58);
 
-    opacity:0;
-    visibility:hidden;
+    backdrop-filter: blur(6px);
 
-    transition:.3s;
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .3s;
 }
 
-.overlay.show{
-    opacity:1;
-    visibility:visible;
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
 }
 
-/* CARRINHO */
 
-.cart{
-    position:fixed;
+/* =========================================================
+   CARRINHO
+========================================================= */
 
-    top:0;
-    right:-450px;
+.cart {
+    position: fixed;
 
-    z-index:2100;
+    top: 0;
+    right: -460px;
 
-    width:420px;
-    max-width:100%;
+    z-index: 2100;
 
-    height:100vh;
+    width: 430px;
+    max-width: 100%;
 
-    padding:28px;
+    height: 100vh;
 
-    background:#fff9ed;
+    padding: 28px;
 
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
+
+    background: #fff9ed;
 
     box-shadow:
         -20px 0 60px rgba(0,0,0,.25);
 
-    transition:.4s;
+    transition: .4s;
 }
 
-.cart.open{
-    right:0;
+.cart.open {
+    right: 0;
 }
 
-.cart-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    padding-bottom:20px;
+    padding-bottom: 20px;
 
-    border-bottom:
-        1px solid #e8dcd1;
+    border-bottom: 1px solid #e8dcd1;
 }
 
-.cart-header button{
-    width:38px;
-    height:38px;
+.cart-header button {
+    width: 38px;
+    height: 38px;
 
-    border:0;
-    border-radius:10px;
+    border: none;
+    border-radius: 10px;
 
-    cursor:pointer;
+    background: #eee2d9;
+
+    cursor: pointer;
 }
 
-.cart-items{
-    flex:1;
+.cart-items {
+    flex: 1;
 
-    overflow:auto;
+    overflow-y: auto;
 
-    padding:15px 0;
+    padding: 15px 0;
 }
 
-.empty{
-    padding:60px 10px;
+.empty {
+    padding: 60px 10px;
 
-    color:#8b756a;
+    color: #8b756a;
 
-    text-align:center;
+    text-align: center;
 }
 
-.empty span{
-    display:block;
+.empty span {
+    display: block;
 
-    margin-bottom:12px;
+    margin-bottom: 12px;
 
-    font-size:45px;
+    font-size: 45px;
 }
 
-.empty p{
-    margin-top:8px;
+.empty p {
+    margin-top: 8px;
 
-    font-size:13px;
+    font-size: 13px;
 }
 
-.cart-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.cart-item {
+    display: flex;
+    align-items: center;
 
-    padding:15px 0;
+    gap: 12px;
 
-    border-bottom:
-        1px solid #e8dcd1;
+    padding: 14px 0;
+
+    border-bottom: 1px solid #e8dcd1;
 }
 
-.cart-item strong{
-    display:block;
+.cart-thumb {
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f2e7dd;
+
+    font-size: 28px;
 }
 
-.cart-item small{
-    color:#8a766c;
+.cart-thumb img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
 }
 
-.remove{
-    border:0;
-
-    background:none;
-
-    color:var(--red);
-
-    font-weight:800;
-
-    cursor:pointer;
+.cart-info {
+    flex: 1;
 }
 
-.total{
-    padding:20px 0;
+.cart-info strong {
+    display: block;
 
-    display:flex;
-    justify-content:space-between;
+    margin-bottom: 4px;
 
-    font-size:21px;
-    font-weight:900;
+    font-size: 14px;
 }
 
-.checkout{
-    width:100%;
+.cart-info small {
+    color: #8a766c;
+}
 
-    padding:17px;
+.remove {
+    border: none;
 
-    border:0;
-    border-radius:12px;
+    background: transparent;
+
+    color: var(--red);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.total {
+    padding: 20px 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.checkout {
+    width: 100%;
+
+    padding: 17px;
+
+    border: none;
+    border-radius: 12px;
 
     background:
-        linear-gradient(135deg,var(--red),#ff4b1c);
+        linear-gradient(
+            135deg,
+            var(--red),
+            #ff4b1c
+        );
 
-    color:white;
+    color: white;
 
-    font-size:15px;
-    font-weight:900;
+    font-size: 15px;
+    font-weight: 900;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    transition:.25s;
+    transition: .2s;
 }
 
-.checkout:hover{
-    transform:translateY(-2px);
+.checkout:hover {
+    transform: translateY(-2px);
 
     box-shadow:
-        0 10px 25px rgba(215,25,32,.25);
+        0 12px 30px rgba(215,25,32,.25);
 }
 
-/* FORNO */
 
-.oven-screen{
-    position:fixed;
-    inset:0;
+/* =========================================================
+   ANIMAÇÃO DO FORNO
+========================================================= */
 
-    z-index:5000;
+.oven-screen {
+    position: fixed;
+    inset: 0;
 
-    display:none;
+    z-index: 5000;
 
-    align-items:center;
-    justify-content:center;
+    display: none;
+    align-items: center;
+    justify-content: center;
 
-    overflow:hidden;
+    overflow: hidden;
 
     background:
-        radial-gradient(circle,#46160c,#130403 65%);
+        radial-gradient(
+            circle,
+            #5c1b0d,
+            #130403 65%
+        );
 }
 
-.oven-screen.active{
-    display:flex;
+.oven-screen.active {
+    display: flex;
 }
 
-.oven{
-    width:500px;
-    height:320px;
+.oven {
+    width: 520px;
+    height: 330px;
 
-    max-width:85%;
+    max-width: 88%;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    border:
-        15px solid #39130c;
+    border: 16px solid #39130c;
 
     border-radius:
         50% 50% 15px 15px;
 
     background:
-        linear-gradient(#a34122,#592013);
+        linear-gradient(
+            #a34122,
+            #592013
+        );
 
     box-shadow:
         0 0 100px rgba(255,70,0,.3);
 }
 
-.oven-hole{
-    width:75%;
-    height:65%;
+.oven-hole {
+    width: 75%;
+    height: 65%;
 
-    overflow:hidden;
+    overflow: hidden;
 
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 
     border-radius:
         50% 50% 5px 5px;
 
-    background:#080202;
+    background:
+        radial-gradient(
+            circle at 50% 100%,
+            #ff4500,
+            #260400 55%,
+            #050101 80%
+        );
 
     box-shadow:
         inset 0 -20px 60px #ff3b00;
 }
 
-.fire{
-    font-size:55px;
+.fire {
+    font-size: 55px;
+
+    filter:
+        drop-shadow(0 0 20px #ff4b00);
 
     animation:
         fire .25s infinite alternate;
 }
 
-@keyframes fire{
-    to{
-        transform:scale(1.15);
+@keyframes fire {
+
+    to {
+        transform: scale(1.15);
     }
 }
 
-.flying-pizza{
-    position:absolute;
 
-    font-size:130px;
+/* PIZZA REAL ENTRANDO NO FORNO */
+
+.flying-pizza-real {
+    position: absolute;
+
+    z-index: 10;
+
+    width: 270px;
+    height: 270px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        5px solid rgba(255,255,255,.25);
+
+    filter:
+        drop-shadow(
+            0 20px 20px
+            rgba(0,0,0,.5)
+        );
 
     animation:
-        ovenPizza 2.3s
+        pizzaIntoOven
+        2.4s
         cubic-bezier(.2,.8,.2,1)
         forwards;
 }
 
-@keyframes ovenPizza{
+@keyframes pizzaIntoOven {
 
-    0%{
-        left:-200px;
+    0% {
+        left: -350px;
 
         transform:
-            rotate(-30deg)
-            scale(1.2);
+            rotate(-50deg)
+            scale(1.25);
     }
 
-    65%{
-        left:50%;
+    55% {
+        left: 50%;
 
         transform:
             translateX(-50%)
-            rotate(330deg)
-            scale(1);
+            rotate(250deg)
+            scale(.95);
     }
 
-    100%{
-        left:50%;
+    75% {
+        left: 50%;
 
         transform:
             translateX(-50%)
-            translateY(50px)
+            translateY(20px)
+            rotate(320deg)
+            scale(.75);
+    }
+
+    100% {
+        left: 50%;
+
+        transform:
+            translateX(-50%)
+            translateY(60px)
             rotate(360deg)
-            scale(.2);
+            scale(.18);
 
-        opacity:.1;
+        opacity: 0;
     }
 }
 
-.oven-message{
-    position:absolute;
+.oven-message {
+    position: absolute;
 
-    bottom:7%;
+    bottom: 7%;
 
-    color:white;
+    width: 100%;
 
-    text-align:center;
+    padding: 20px;
 
-    opacity:0;
+    color: white;
+
+    text-align: center;
+
+    opacity: 0;
 
     animation:
-        messageAppear .8s
+        ovenMessage .8s
         forwards 2s;
 }
 
-.oven-message small{
-    color:var(--yellow);
+.oven-message small {
+    color: var(--yellow);
 
-    font-weight:900;
-    letter-spacing:3px;
+    font-weight: 900;
+    letter-spacing: 3px;
 }
 
-.oven-message h2{
-    margin-top:8px;
+.oven-message h2 {
+    margin-top: 8px;
 
     font-size:
         clamp(28px,5vw,55px);
 }
 
-@keyframes messageAppear{
-    to{
-        opacity:1;
+@keyframes ovenMessage {
+
+    to {
+        opacity: 1;
 
         transform:
             translateY(-10px);
     }
 }
 
-/* PAGAMENTO */
 
-.finish{
-    position:fixed;
-    inset:0;
+/* =========================================================
+   FINALIZAÇÃO ANTES DO QR
+========================================================= */
 
-    z-index:6000;
+.finish-screen {
+    position: fixed;
+    inset: 0;
 
-    display:none;
+    z-index: 6000;
 
-    justify-content:center;
-    align-items:center;
+    display: none;
+    align-items: center;
+    justify-content: center;
 
-    overflow:hidden;
+    overflow: hidden;
 
     background:
         radial-gradient(
             circle,
             #ffc928,
             #e32120 60%,
-            #a20d12
+            #9c090e
         );
-
-    color:white;
 }
 
-.finish.active{
-    display:flex;
+.finish-screen.active {
+    display: flex;
 }
 
-.finish::before{
-    content:"";
+.finish-pizza-area {
+    position: relative;
 
-    position:absolute;
+    width: 330px;
+    height: 330px;
 
-    width:700px;
-    height:700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    border:
-        2px solid rgba(255,255,255,.15);
+.finish-pizza-real {
+    position: relative;
 
-    border-radius:50%;
+    z-index: 2;
+
+    width: 210px;
+    height: 210px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 5px solid rgba(255,255,255,.4);
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,.3);
 
     animation:
-        pulse 1.5s infinite;
+        spinRealPizza .65s linear infinite;
 }
 
-@keyframes pulse{
+@keyframes spinRealPizza {
 
-    50%{
-        transform:scale(1.15);
-        opacity:.3;
+    from {
+        transform:
+            rotate(0deg)
+            scale(1);
     }
 
-}
-
-.hand-area{
-    position:absolute;
-
-    left:50%;
-    top:43%;
-
-    width:400px;
-    height:400px;
-
-    transform:
-        translate(-50%,-50%);
-}
-
-.spin-pizza{
-    position:absolute;
-
-    top:0;
-    left:50%;
-
-    z-index:2;
-
-    font-size:140px;
-
-    animation:
-        spinPizza .8s linear infinite;
-}
-
-@keyframes spinPizza{
-
-    from{
+    50% {
         transform:
-            translateX(-50%)
-            rotate(0);
+            rotate(180deg)
+            scale(1.08);
     }
 
-    to{
+    to {
         transform:
-            translateX(-50%)
-            rotate(360deg);
+            rotate(360deg)
+            scale(1);
     }
 }
 
-.hand{
-    position:absolute;
+.finish-hand {
+    position: absolute;
 
-    left:50%;
-    bottom:10px;
+    z-index: 1;
 
-    font-size:175px;
+    bottom: -65px;
 
-    transform:
-        translateX(-50%)
-        translateY(350px);
+    font-size: 150px;
 
     animation:
-        handUp 1s
-        cubic-bezier(.2,.8,.2,1)
-        forwards;
+        handUp .8s ease forwards;
 }
 
-@keyframes handUp{
+@keyframes handUp {
 
-    to{
+    from {
         transform:
-            translateX(-50%)
+            translateY(200px);
+    }
+
+    to {
+        transform:
             translateY(0);
     }
-
 }
 
-.finish-message{
-    position:absolute;
+.finish-text {
+    position: absolute;
 
-    bottom:7%;
+    bottom: 8%;
 
-    width:100%;
+    width: 100%;
 
-    padding:20px;
+    padding: 20px;
 
-    text-align:center;
+    color: white;
 
-    opacity:0;
-
-    animation:
-        finalMessage .7s
-        forwards 1s;
+    text-align: center;
 }
 
-.finish-message h2{
+.finish-text h2 {
     font-size:
         clamp(32px,5vw,55px);
 }
 
-.finish-message p{
-    margin-top:10px;
+.finish-text p {
+    margin-top: 10px;
 
-    color:#fff1c6;
+    color: #fff1c6;
 }
 
-.whatsapp-status{
-    display:inline-block;
 
-    margin-top:18px;
+/* =========================================================
+   TELA QR CODE
+========================================================= */
 
-    padding:9px 14px;
+.qr-screen {
+    position: fixed;
+    inset: 0;
 
-    border-radius:50px;
+    z-index: 7000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    overflow-y: auto;
 
     background:
-        rgba(0,0,0,.16);
-
-    font-size:12px;
-    font-weight:bold;
+        radial-gradient(
+            circle at 50% 0%,
+            #ff4b1c,
+            #b80f16 45%,
+            #180604 100%
+        );
 }
 
-@keyframes finalMessage{
+.qr-screen.active {
+    display: flex;
 
-    to{
-        opacity:1;
-
-        transform:
-            translateY(-10px);
-    }
-
+    animation:
+        qrAppear .4s ease;
 }
 
-/* MOBILE */
+@keyframes qrAppear {
 
-@media(max-width:850px){
-
-    nav{
-        display:none;
+    from {
+        opacity: 0;
+        transform: scale(1.04);
     }
 
-    .hero{
-        grid-template-columns:1fr;
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
-        text-align:center;
+.qr-box {
+    position: relative;
+
+    width: 430px;
+    max-width: 100%;
+
+    margin: auto;
+
+    padding: 35px;
+
+    border-radius: 28px;
+
+    background: white;
+
+    text-align: center;
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.4);
+}
+
+.qr-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: -68px auto 15px;
+
+    display: grid;
+    place-items: center;
+
+    overflow: hidden;
+
+    border: 4px solid white;
+    border-radius: 50%;
+
+    background: var(--yellow);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.15);
+}
+
+.qr-icon img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.qr-box > small {
+    color: var(--red);
+
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.qr-box h2 {
+    margin: 8px 0 10px;
+
+    font-size: 30px;
+}
+
+.qr-description {
+    color: #75645c;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.qr-container {
+    width: 245px;
+    min-height: 245px;
+
+    margin: 22px auto;
+
+    padding: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        2px solid #eee2d9;
+
+    border-radius: 18px;
+
+    background: white;
+}
+
+.qr-container img {
+    width: 220px;
+    height: 220px;
+
+    display: block;
+}
+
+.order-summary {
+    max-height: 160px;
+
+    overflow-y: auto;
+
+    margin: 18px 0;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    background: #fff5db;
+
+    text-align: left;
+
+    font-size: 13px;
+}
+
+.order-summary > strong {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--red);
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 5px 0;
+}
+
+.summary-image {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 7px;
+
+    background: white;
+}
+
+.summary-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.summary-info {
+    flex: 1;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 10px;
+
+    padding-top: 10px;
+
+    border-top:
+        1px solid #e8d7a5;
+
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.whatsapp-button {
+    width: 100%;
+
+    padding: 16px;
+
+    border: none;
+    border-radius: 13px;
+
+    background: var(--green);
+    color: white;
+
+    font-size: 15px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.whatsapp-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(37,211,102,.28);
+}
+
+.close-qr {
+    width: 100%;
+
+    margin-top: 9px;
+
+    padding: 12px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #75645c;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media(max-width:900px) {
+
+    nav {
+        display: none;
     }
 
-    .hero-content{
-        margin:auto;
+    .hero {
+        grid-template-columns: 1fr;
+
+        text-align: center;
     }
 
-    .hero p{
-        margin:25px auto;
+    .hero-content {
+        margin: auto;
     }
 
-    .hero-pizza{
-        margin-top:60px;
+    .hero p {
+        margin:
+            25px auto;
     }
 
-    .pizza{
-        width:280px;
-        height:280px;
+    .hero-pizza {
+        margin-top: 60px;
     }
 
-    .products{
+    .hero-pizza-real {
+        width: 310px;
+        height: 310px;
+    }
+
+    .hero-pizza::before {
+        width: 280px;
+    }
+
+    .products {
         grid-template-columns:
-            1fr 1fr;
+            repeat(2,1fr);
     }
 }
 
-@media(max-width:550px){
+@media(max-width:580px) {
 
-    .products{
-        grid-template-columns:1fr;
+    header {
+        padding: 0 4%;
     }
 
-    .hero h1{
-        letter-spacing:-3px;
+    .logo {
+        font-size: 17px;
     }
 
-    .menu{
+    .cart-button {
+        padding: 10px 13px;
+    }
+
+    .hero {
+        padding:
+            125px 5% 70px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    .hero-pizza-real {
+        width: 270px;
+        height: 270px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .menu {
         padding:
             80px 5%;
     }
 
-    .hand-area{
-        transform:
-            translate(-50%,-50%)
-            scale(.8);
+    .title h2 {
+        font-size: 34px;
+    }
+
+    .qr-box {
+        padding:
+            30px 20px 20px;
+    }
+
+    .qr-container {
+        width: 220px;
+        min-height: 220px;
+    }
+
+    .qr-container img {
+        width: 195px;
+        height: 195px;
+    }
+
+    .flying-pizza-real {
+        width: 190px;
+        height: 190px;
     }
 }
 
 </style>
 </head>
 
+
 <body>
+
+
+<!-- ======================================================
+     HEADER
+====================================================== -->
 
 <header>
 
@@ -1015,7 +1562,9 @@ nav button:hover{
 </header>
 
 
-<!-- HERO -->
+<!-- ======================================================
+     HERO
+====================================================== -->
 
 <section class="hero">
 
@@ -1032,8 +1581,7 @@ nav button:hover{
 
         <p>
             Massa artesanal, ingredientes selecionados
-            e pizzas preparadas especialmente depois
-            que você faz o seu pedido.
+            e pizzas preparadas especialmente para você.
         </p>
 
         <a
@@ -1046,16 +1594,23 @@ nav button:hover{
 
     </div>
 
+
     <div class="hero-pizza">
 
-        <div class="pizza"></div>
+        <img
+            class="hero-pizza-real"
+            src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1000&q=90"
+            alt="Pizza artesanal"
+        >
 
     </div>
 
 </section>
 
 
-<!-- PIZZAS -->
+<!-- ======================================================
+     PIZZAS
+====================================================== -->
 
 <section
     class="menu"
@@ -1072,8 +1627,8 @@ nav button:hover{
         </h2>
 
         <p>
-            Selecione seu sabor favorito
-            e mande direto para o forno.
+            Pizzas artesanais preparadas
+            com ingredientes selecionados.
         </p>
 
     </div>
@@ -1086,7 +1641,9 @@ nav button:hover{
 </section>
 
 
-<!-- BEBIDAS -->
+<!-- ======================================================
+     BEBIDAS
+====================================================== -->
 
 <section
     class="menu"
@@ -1117,7 +1674,9 @@ nav button:hover{
 </section>
 
 
-<!-- OVERLAY -->
+<!-- ======================================================
+     OVERLAY
+====================================================== -->
 
 <div
     class="overlay"
@@ -1126,7 +1685,9 @@ nav button:hover{
 </div>
 
 
-<!-- CARRINHO -->
+<!-- ======================================================
+     CARRINHO
+====================================================== -->
 
 <aside
     class="cart"
@@ -1135,7 +1696,7 @@ nav button:hover{
     <div class="cart-header">
 
         <h2>
-            🛒 Seu carrinho
+            Seu carrinho
         </h2>
 
         <button onclick="closeCart()">
@@ -1151,7 +1712,9 @@ nav button:hover{
 
     <div class="total">
 
-        <span>Total</span>
+        <span>
+            Total
+        </span>
 
         <span id="total">
             R$ 0,00
@@ -1170,7 +1733,9 @@ nav button:hover{
 </aside>
 
 
-<!-- ANIMAÇÃO FORNO -->
+<!-- ======================================================
+     FORNO
+====================================================== -->
 
 <div
     class="oven-screen"
@@ -1178,62 +1743,193 @@ nav button:hover{
 </div>
 
 
-<!-- ANIMAÇÃO FINAL -->
+<!-- ======================================================
+     ANIMAÇÃO FINAL
+====================================================== -->
 
 <div
-    class="finish"
-    id="finish">
+    class="finish-screen"
+    id="finishScreen">
+</div>
+
+
+<!-- ======================================================
+     QR CODE
+====================================================== -->
+
+<div
+    class="qr-screen"
+    id="qrScreen">
+
+    <div class="qr-box">
+
+        <div
+            class="qr-icon"
+            id="qrPizzaIcon">
+        </div>
+
+        <small>
+            PEDIDO PRONTO
+        </small>
+
+        <h2>
+            Envie pelo WhatsApp
+        </h2>
+
+        <p class="qr-description">
+            Escaneie o QR Code com seu celular
+            para abrir o WhatsApp com seu pedido
+            completo já preenchido.
+        </p>
+
+        <div
+            class="qr-container"
+            id="qrContainer">
+        </div>
+
+        <div
+            class="order-summary"
+            id="orderSummary">
+        </div>
+
+        <button
+            class="whatsapp-button"
+            id="openWhatsAppButton">
+
+            📱 Abrir WhatsApp
+
+        </button>
+
+        <button
+            class="close-qr"
+            onclick="closeQRCode()">
+
+            Voltar ao cardápio
+
+        </button>
+
+    </div>
+
 </div>
 
 
 <script>
 
-/* ==========================================
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+/*
+
+Número configurado:
+
+Brasil: 55
+DDD: 81
+Número informado: 91676409
+
+*/
+
+const NUMERO_WHATSAPP =
+    "558191676409";
+
+
+/* =========================================================
+   IMAGENS REAIS
+========================================================= */
+
+const IMAGENS = {
+
+    margherita:
+    "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=85",
+
+    pepperoni:
+    "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=900&q=85",
+
+    quatroQueijos:
+    "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=85",
+
+    calabresa:
+    "https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=900&q=85",
+
+    frango:
+    "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=900&q=85",
+
+    fornoRosso:
+    "https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=900&q=90"
+
+};
+
+
+/* =========================================================
    PRODUTOS
-========================================== */
+========================================================= */
 
 const pizzas = [
 
     {
-        name:"Margherita",
+        name: "Margherita",
+
         description:
         "Molho artesanal, mozzarella, tomate e manjericão fresco.",
-        price:39.90
+
+        price: 39.90,
+
+        image: IMAGENS.margherita
     },
 
     {
-        name:"Pepperoni",
+        name: "Pepperoni",
+
         description:
         "Mozzarella, molho especial e generosas fatias de pepperoni.",
-        price:44.90
+
+        price: 44.90,
+
+        image: IMAGENS.pepperoni
     },
 
     {
-        name:"Quatro Queijos",
+        name: "Quatro Queijos",
+
         description:
         "Mozzarella, parmesão, provolone e gorgonzola.",
-        price:46.90
+
+        price: 46.90,
+
+        image: IMAGENS.quatroQueijos
     },
 
     {
-        name:"Calabresa",
+        name: "Calabresa",
+
         description:
         "Calabresa artesanal, mozzarella, cebola e orégano.",
-        price:41.90
+
+        price: 41.90,
+
+        image: IMAGENS.calabresa
     },
 
     {
-        name:"Frango Especial",
+        name: "Frango Especial",
+
         description:
         "Frango temperado, mozzarella, milho e requeijão cremoso.",
-        price:43.90
+
+        price: 43.90,
+
+        image: IMAGENS.frango
     },
 
     {
-        name:"Forno Rosso",
+        name: "Forno Rosso",
+
         description:
         "Pepperoni, bacon, cebola caramelizada e molho especial da casa.",
-        price:52.90
+
+        price: 52.90,
+
+        image: IMAGENS.fornoRosso
     }
 
 ];
@@ -1242,27 +1938,36 @@ const pizzas = [
 const drinks = [
 
     {
-        name:"Cola Gelada",
+        name: "Cola Gelada",
+
         description:
         "Refrigerante cola 1L bem gelado.",
-        price:10.90,
-        icon:"🥤"
+
+        price: 10.90,
+
+        icon: "🥤"
     },
 
     {
-        name:"Limonada",
+        name: "Limonada",
+
         description:
         "Limonada artesanal preparada na hora.",
-        price:8.90,
-        icon:"🍋"
+
+        price: 8.90,
+
+        icon: "🍋"
     },
 
     {
-        name:"Suco de Laranja",
+        name: "Suco de Laranja",
+
         description:
         "Suco natural de laranja.",
-        price:9.90,
-        icon:"🍊"
+
+        price: 9.90,
+
+        icon: "🍊"
     }
 
 ];
@@ -1272,34 +1977,40 @@ let cart = [];
 
 let ovenRunning = false;
 
+let currentWhatsAppURL = "";
 
-/* ==========================================
-   FORMATAÇÃO DO DINHEIRO
-========================================== */
+let lastPizzaImage =
+    IMAGENS.margherita;
 
-function money(value){
+
+/* =========================================================
+   FORMATAR DINHEIRO
+========================================================= */
+
+function money(value) {
 
     return value.toLocaleString(
         "pt-BR",
         {
-            style:"currency",
-            currency:"BRL"
+            style: "currency",
+            currency: "BRL"
         }
     );
 
 }
 
 
-/* ==========================================
-   CRIAR CARDÁPIO
-========================================== */
+/* =========================================================
+   CARREGAR PRODUTOS
+========================================================= */
 
-function loadProducts(){
+function loadProducts() {
 
     const pizzaGrid =
         document.getElementById(
             "pizzaGrid"
         );
+
 
     const drinkGrid =
         document.getElementById(
@@ -1312,162 +2023,193 @@ function loadProducts(){
     drinkGrid.innerHTML = "";
 
 
+    /* PIZZAS */
+
     pizzas.forEach(
-        (pizza,index)=>{
+        (pizza, index) => {
 
-        pizzaGrid.insertAdjacentHTML(
-            "beforeend",
-            `
+            pizzaGrid.insertAdjacentHTML(
+                "beforeend",
+                `
 
-            <article class="card">
+                <article class="card">
 
-                <div class="product-image">
-                    🍕
-                </div>
+                    <div class="product-image">
 
-                <div class="card-content">
+                        <span class="product-badge">
+                            ARTESANAL
+                        </span>
 
-                    <h3>
-                        ${pizza.name}
-                    </h3>
-
-                    <p>
-                        ${pizza.description}
-                    </p>
-
-                    <div class="bottom">
-
-                        <div class="price">
-                            ${money(pizza.price)}
-                        </div>
-
-                        <button
-                            class="add"
-                            onclick="addPizza(${index})">
-
-                            +
-
-                        </button>
+                        <img
+                            src="${pizza.image}"
+                            alt="Pizza ${pizza.name}"
+                            loading="lazy"
+                        >
 
                     </div>
 
-                </div>
 
-            </article>
+                    <div class="card-content">
 
-            `
-        );
+                        <h3>
+                            ${pizza.name}
+                        </h3>
 
-    });
+                        <p>
+                            ${pizza.description}
+                        </p>
 
+                        <div class="bottom">
+
+                            <span class="price">
+                                ${money(pizza.price)}
+                            </span>
+
+                            <button
+                                class="add"
+                                onclick="addPizza(${index})"
+                                aria-label="Adicionar ${pizza.name}">
+
+                                +
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                `
+            );
+
+        }
+    );
+
+
+    /* BEBIDAS */
 
     drinks.forEach(
-        (drink,index)=>{
+        (drink, index) => {
 
-        drinkGrid.insertAdjacentHTML(
-            "beforeend",
-            `
+            drinkGrid.insertAdjacentHTML(
+                "beforeend",
+                `
 
-            <article class="card">
+                <article class="card">
 
-                <div class="product-image">
-                    ${drink.icon}
-                </div>
+                    <div class="drink-image">
 
-                <div class="card-content">
-
-                    <h3>
-                        ${drink.name}
-                    </h3>
-
-                    <p>
-                        ${drink.description}
-                    </p>
-
-                    <div class="bottom">
-
-                        <div class="price">
-                            ${money(drink.price)}
-                        </div>
-
-                        <button
-                            class="add"
-                            onclick="addDrink(${index})">
-
-                            +
-
-                        </button>
+                        ${drink.icon}
 
                     </div>
 
-                </div>
 
-            </article>
+                    <div class="card-content">
 
-            `
-        );
+                        <h3>
+                            ${drink.name}
+                        </h3>
 
-    });
+                        <p>
+                            ${drink.description}
+                        </p>
+
+                        <div class="bottom">
+
+                            <span class="price">
+                                ${money(drink.price)}
+                            </span>
+
+                            <button
+                                class="add"
+                                onclick="addDrink(${index})">
+
+                                +
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                `
+            );
+
+        }
+    );
 
 }
 
 
-/* ==========================================
+/* =========================================================
    ADICIONAR PIZZA
-========================================== */
+========================================================= */
 
-function addPizza(index){
+function addPizza(index) {
 
     const pizza =
         pizzas[index];
 
 
-    if(!pizza)
+    if (!pizza) {
         return;
+    }
 
 
     cart.push({
 
-        name:pizza.name,
+        name: pizza.name,
 
-        price:pizza.price,
+        price: pizza.price,
 
-        type:"pizza"
+        type: "pizza",
+
+        image: pizza.image
 
     });
+
+
+    lastPizzaImage =
+        pizza.image;
 
 
     updateCart();
 
 
     showOven(
-        pizza.name
+        pizza
     );
 
 }
 
 
-/* ==========================================
+/* =========================================================
    ADICIONAR BEBIDA
-========================================== */
+========================================================= */
 
-function addDrink(index){
+function addDrink(index) {
 
     const drink =
         drinks[index];
 
 
-    if(!drink)
+    if (!drink) {
         return;
+    }
 
 
     cart.push({
 
-        name:drink.name,
+        name: drink.name,
 
-        price:drink.price,
+        price: drink.price,
 
-        type:"drink"
+        type: "drink",
+
+        icon: drink.icon
 
     });
 
@@ -1477,14 +2219,15 @@ function addDrink(index){
 }
 
 
-/* ==========================================
-   ANIMAÇÃO DO FORNO
-========================================== */
+/* =========================================================
+   ANIMAÇÃO DA PIZZA REAL ENTRANDO NO FORNO
+========================================================= */
 
-function showOven(name){
+function showOven(pizza) {
 
-    if(ovenRunning)
+    if (ovenRunning) {
         return;
+    }
 
 
     ovenRunning = true;
@@ -1511,20 +2254,22 @@ function showOven(name){
         </div>
 
 
-        <div class="flying-pizza">
-            🍕
-        </div>
+        <img
+            class="flying-pizza-real"
+            src="${pizza.image}"
+            alt="${pizza.name}"
+        >
 
 
         <div class="oven-message">
 
             <small>
-                ${name.toUpperCase()}
+                ${pizza.name.toUpperCase()}
                 NO FORNO
             </small>
 
             <h2>
-                Seu pedido está a caminho.
+                Seu pedido está a caminho
             </h2>
 
         </div>
@@ -1541,34 +2286,37 @@ function showOven(name){
         "hidden";
 
 
-    setTimeout(()=>{
+    setTimeout(
+        () => {
 
-        screen.classList.remove(
-            "active"
-        );
-
-
-        screen.innerHTML =
-            "";
+            screen.classList.remove(
+                "active"
+            );
 
 
-        document.body.style.overflow =
-            "";
+            screen.innerHTML =
+                "";
 
 
-        ovenRunning =
-            false;
+            document.body.style.overflow =
+                "";
 
-    },3500);
+
+            ovenRunning =
+                false;
+
+        },
+        3500
+    );
 
 }
 
 
-/* ==========================================
+/* =========================================================
    ATUALIZAR CARRINHO
-========================================== */
+========================================================= */
 
-function updateCart(){
+function updateCart() {
 
     const container =
         document.getElementById(
@@ -1592,21 +2340,22 @@ function updateCart(){
         cart.length;
 
 
-    if(cart.length === 0){
+    if (cart.length === 0) {
 
         container.innerHTML = `
 
             <div class="empty">
 
-                <span>🛒</span>
+                <span>
+                    🛒
+                </span>
 
                 <strong>
                     Seu carrinho está vazio
                 </strong>
 
                 <p>
-                    Adicione uma pizza
-                    para começar.
+                    Adicione uma pizza para começar.
                 </p>
 
             </div>
@@ -1615,62 +2364,89 @@ function updateCart(){
 
     }
 
-    else{
+    else {
 
         container.innerHTML =
             "";
 
 
         cart.forEach(
-            (item,index)=>{
+            (item, index) => {
 
-            const icon =
-                item.type === "pizza"
-                ? "🍕"
-                : "🥤";
+                let imageHTML;
 
 
-            container.insertAdjacentHTML(
-                "beforeend",
-                `
+                if (
+                    item.type === "pizza"
+                ) {
 
-                <div class="cart-item">
+                    imageHTML = `
 
-                    <div>
+                        <img
+                            src="${item.image}"
+                            alt="${item.name}"
+                        >
 
-                        <strong>
-                            ${icon}
-                            ${item.name}
-                        </strong>
+                    `;
 
-                        <small>
-                            ${money(item.price)}
-                        </small>
+                }
+
+                else {
+
+                    imageHTML =
+                        item.icon || "🥤";
+
+                }
+
+
+                container.insertAdjacentHTML(
+                    "beforeend",
+                    `
+
+                    <div class="cart-item">
+
+                        <div class="cart-thumb">
+
+                            ${imageHTML}
+
+                        </div>
+
+
+                        <div class="cart-info">
+
+                            <strong>
+                                ${item.name}
+                            </strong>
+
+                            <small>
+                                ${money(item.price)}
+                            </small>
+
+                        </div>
+
+
+                        <button
+                            class="remove"
+                            onclick="removeItem(${index})">
+
+                            Remover
+
+                        </button>
 
                     </div>
 
+                    `
+                );
 
-                    <button
-                        class="remove"
-                        onclick="removeItem(${index})">
-
-                        Remover
-
-                    </button>
-
-                </div>
-
-                `
-            );
-
-        });
+            }
+        );
 
     }
 
 
     const total =
         cart.reduce(
-            (sum,item)=>
+            (sum, item) =>
                 sum + item.price,
             0
         );
@@ -1682,11 +2458,11 @@ function updateCart(){
 }
 
 
-/* ==========================================
+/* =========================================================
    REMOVER ITEM
-========================================== */
+========================================================= */
 
-function removeItem(index){
+function removeItem(index) {
 
     cart.splice(
         index,
@@ -1699,11 +2475,11 @@ function removeItem(index){
 }
 
 
-/* ==========================================
+/* =========================================================
    ABRIR CARRINHO
-========================================== */
+========================================================= */
 
-function openCart(){
+function openCart() {
 
     document
         .getElementById("cart")
@@ -1721,11 +2497,11 @@ function openCart(){
 }
 
 
-/* ==========================================
+/* =========================================================
    FECHAR CARRINHO
-========================================== */
+========================================================= */
 
-function closeCart(){
+function closeCart() {
 
     document
         .getElementById("cart")
@@ -1743,82 +2519,38 @@ function closeCart(){
 }
 
 
-/* ==========================================
-   CONCLUIR PEDIDO + WHATSAPP
-========================================== */
+/* =========================================================
+   CRIAR MENSAGEM WHATSAPP
+========================================================= */
 
-function finishOrder(){
-
-    /*
-        Impede finalizar
-        carrinho vazio.
-    */
-
-    if(cart.length === 0){
-
-        alert(
-            "Adicione pelo menos um item antes de concluir o pedido."
-        );
-
-        return;
-
-    }
-
-
-    /*
-        Número do WhatsApp.
-
-        55 = Brasil
-        83 = DDD
-        restante = telefone
-    */
-
-    const numeroWhatsApp =
-        "5583993318645";
-
-
-    /*
-        Calculamos o total ANTES
-        de limpar o carrinho.
-    */
-
-    const valorTotal =
-        cart.reduce(
-            (soma,item)=>
-                soma + item.price,
-            0
-        );
-
-
-    /*
-        Criação da mensagem.
-    */
+function createWhatsAppMessage(total) {
 
     let mensagem =
         "🍕 *NOVO PEDIDO - FORNO ROSSO*\n\n";
 
 
     mensagem +=
-        "📋 *ITENS DO PEDIDO:*\n\n";
+        "📋 *ITENS DO PEDIDO*\n\n";
 
 
     cart.forEach(
-        (item,index)=>{
+        (item, index) => {
 
-        const icone =
-            item.type === "pizza"
-            ? "🍕"
-            : "🥤";
-
-
-        mensagem +=
-            `${index + 1}. ${icone} *${item.name}*\n`;
+            const icon =
+                item.type === "pizza"
+                    ? "🍕"
+                    : "🥤";
 
 
-        mensagem +=
-            `   ${money(item.price)}\n\n`;
+            mensagem +=
+                `${index + 1}. ${icon} *${item.name}*\n`;
 
-    });
+
+            mensagem +=
+                `💵 ${money(item.price)}\n\n`;
+
+        }
+    );
 
 
     mensagem +=
@@ -1826,7 +2558,7 @@ function finishOrder(){
 
 
     mensagem +=
-        `💰 *TOTAL: ${money(valorTotal)}*\n`;
+        `💰 *TOTAL: ${money(total)}*\n`;
 
 
     mensagem +=
@@ -1837,81 +2569,122 @@ function finishOrder(){
         "Olá! Gostaria de confirmar este pedido. 🍕";
 
 
-    /*
-        Converte caracteres para
-        funcionarem dentro da URL.
-    */
+    return mensagem;
 
-    const mensagemCodificada =
+}
+
+
+/* =========================================================
+   CONCLUIR PAGAMENTO
+========================================================= */
+
+function finishOrder() {
+
+    if (cart.length === 0) {
+
+        alert(
+            "Adicione pelo menos um item antes de concluir o pedido."
+        );
+
+        return;
+    }
+
+
+    const total =
+        cart.reduce(
+            (sum, item) =>
+                sum + item.price,
+            0
+        );
+
+
+    const mensagem =
+        createWhatsAppMessage(
+            total
+        );
+
+
+    currentWhatsAppURL =
+        "https://wa.me/" +
+        NUMERO_WHATSAPP +
+        "?text=" +
         encodeURIComponent(
             mensagem
         );
 
 
     /*
-        Cria link oficial do WhatsApp.
+        Descobre a última pizza
+        escolhida para usar
+        na animação.
     */
 
-    const whatsappURL =
-        `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+    const pizzaDoPedido =
+        [...cart]
+        .reverse()
+        .find(
+            item =>
+                item.type === "pizza"
+        );
 
 
-    /*
-        Fecha o carrinho.
-    */
+    if (
+        pizzaDoPedido &&
+        pizzaDoPedido.image
+    ) {
+
+        lastPizzaImage =
+            pizzaDoPedido.image;
+
+    }
+
 
     closeCart();
 
 
     /*
-        Animação profissional
-        antes de abrir WhatsApp.
+        ANIMAÇÃO COM PIZZA REAL
     */
 
-    const screen =
+    const finishScreen =
         document.getElementById(
-            "finish"
+            "finishScreen"
         );
 
 
-    screen.innerHTML = `
+    finishScreen.innerHTML = `
 
-        <div class="hand-area">
+        <div class="finish-pizza-area">
 
-            <div class="spin-pizza">
-                🍕
-            </div>
+            <img
+                class="finish-pizza-real"
+                src="${lastPizzaImage}"
+                alt="Pizza do pedido"
+            >
 
-            <div class="hand">
+            <div class="finish-hand">
                 🤚
             </div>
 
         </div>
 
 
-        <div class="finish-message">
+        <div class="finish-text">
 
             <h2>
                 Pedido preparado!
             </h2>
 
             <p>
-                Estamos levando você
-                para confirmar o pedido.
+                Gerando seu QR Code...
             </p>
-
-            <div class="whatsapp-status">
-
-                📱 Abrindo WhatsApp...
-
-            </div>
 
         </div>
 
     `;
 
 
-    screen.classList.add(
+    finishScreen.classList.add(
         "active"
     );
 
@@ -1921,85 +2694,314 @@ function finishOrder(){
 
 
     /*
-        Espera a animação aparecer
-        antes de abrir o WhatsApp.
+        GUARDA PEDIDO
     */
 
-    setTimeout(()=>{
+    localStorage.setItem(
+        "ultimoPedido",
+        JSON.stringify({
 
-        /*
-            Abre o WhatsApp com
-            o pedido preenchido.
-        */
+            itens: cart,
 
-        window.location.href =
-            whatsappURL;
+            total: total
 
-
-        /*
-            Limpa carrinho depois
-            de preparar o envio.
-        */
-
-        cart = [];
+        })
+    );
 
 
-        updateCart();
+    /*
+        DEPOIS DA ANIMAÇÃO,
+        MOSTRA O QR CODE
+    */
+
+    setTimeout(
+        () => {
+
+            finishScreen.classList.remove(
+                "active"
+            );
 
 
-        screen.classList.remove(
-            "active"
-        );
+            finishScreen.innerHTML =
+                "";
 
 
-        screen.innerHTML =
-            "";
+            showQRCode(
+                total
+            );
 
-
-        document.body.style.overflow =
-            "";
-
-    },2300);
+        },
+        1900
+    );
 
 }
 
 
-/* ==========================================
-   NAVEGAÇÃO
-========================================== */
+/* =========================================================
+   MOSTRAR QR CODE
+========================================================= */
 
-function goTo(id){
+function showQRCode(total) {
+
+    const qrContainer =
+        document.getElementById(
+            "qrContainer"
+        );
+
+
+    const orderSummary =
+        document.getElementById(
+            "orderSummary"
+        );
+
+
+    const qrPizzaIcon =
+        document.getElementById(
+            "qrPizzaIcon"
+        );
+
+
+    /*
+        PIZZA REAL NO ÍCONE
+    */
+
+    qrPizzaIcon.innerHTML = `
+
+        <img
+            src="${lastPizzaImage}"
+            alt="Pizza"
+        >
+
+    `;
+
+
+    /*
+        GERAR QR CODE
+
+        O QR contém o link
+        para o WhatsApp.
+    */
+
+    qrContainer.innerHTML =
+        "";
+
+
+    const qrImage =
+        document.createElement(
+            "img"
+        );
+
+
+    qrImage.alt =
+        "QR Code para enviar pedido pelo WhatsApp";
+
+
+    qrImage.src =
+        "https://api.qrserver.com/v1/create-qr-code/" +
+        "?size=300x300" +
+        "&margin=10" +
+        "&data=" +
+        encodeURIComponent(
+            currentWhatsAppURL
+        );
+
+
+    qrContainer.appendChild(
+        qrImage
+    );
+
+
+    /*
+        RESUMO DO PEDIDO
+    */
+
+    let resumo = `
+
+        <strong>
+            Seu pedido
+        </strong>
+
+    `;
+
+
+    cart.forEach(
+        item => {
+
+            let miniatura;
+
+
+            if (
+                item.type === "pizza"
+            ) {
+
+                miniatura = `
+
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}"
+                    >
+
+                `;
+
+            }
+
+            else {
+
+                miniatura =
+                    item.icon || "🥤";
+
+            }
+
+
+            resumo += `
+
+                <div class="summary-item">
+
+                    <div class="summary-image">
+
+                        ${miniatura}
+
+                    </div>
+
+                    <div class="summary-info">
+
+                        ${item.name}
+
+                    </div>
+
+                    <strong>
+                        ${money(item.price)}
+                    </strong>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    resumo += `
+
+        <div class="order-total">
+
+            <span>
+                Total
+            </span>
+
+            <span>
+                ${money(total)}
+            </span>
+
+        </div>
+
+    `;
+
+
+    orderSummary.innerHTML =
+        resumo;
+
+
+    /*
+        BOTÃO WHATSAPP
+    */
+
+    document
+        .getElementById(
+            "openWhatsAppButton"
+        )
+        .onclick =
+        function() {
+
+            window.location.href =
+                currentWhatsAppURL;
+
+        };
+
+
+    /*
+        MOSTRAR TELA
+    */
+
+    document
+        .getElementById(
+            "qrScreen"
+        )
+        .classList.add(
+            "active"
+        );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =========================================================
+   FECHAR QR CODE
+========================================================= */
+
+function closeQRCode() {
+
+    document
+        .getElementById(
+            "qrScreen"
+        )
+        .classList.remove(
+            "active"
+        );
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =========================================================
+   NAVEGAÇÃO
+========================================================= */
+
+function goTo(id) {
 
     const section =
-        document.getElementById(id);
+        document.getElementById(
+            id
+        );
 
 
-    if(!section)
+    if (!section) {
         return;
+    }
 
 
     section.scrollIntoView({
 
-        behavior:"smooth",
+        behavior: "smooth",
 
-        block:"start"
+        block: "start"
 
     });
 
 }
 
 
-/* ==========================================
-   ESC FECHA CARRINHO
-========================================== */
+/* =========================================================
+   TECLA ESC
+========================================================= */
 
 document.addEventListener(
     "keydown",
-    (event)=>{
+    event => {
 
-        if(event.key === "Escape"){
+        if (
+            event.key === "Escape"
+        ) {
 
             closeCart();
+
+            closeQRCode();
 
         }
 
@@ -2007,9 +3009,9 @@ document.addEventListener(
 );
 
 
-/* ==========================================
-   INICIAR SITE
-========================================== */
+/* =========================================================
+   INICIAR
+========================================================= */
 
 loadProducts();
 
